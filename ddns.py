@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import json
 import os
 import requests
@@ -29,14 +31,16 @@ def set_ip(current_ip: str):
 
     headers = {
         "X-Auth-Email": user_email,
-        "X-Auth-Key": api_key,
+        "Authorization": "Bearer %s" % api_key,
         "Content-Type": "application/json",
     }
 
     payload = {"type": "A", "name": record_name, "content": current_ip}
     response = requests.put(url, headers=headers, data=json.dumps(payload))
     print(response.status_code)
-
+    if not str(response.status_code).startswith("2"):
+        print(response.text)
+        exit(1)
 
 def main():
     current_ip = get_ip()

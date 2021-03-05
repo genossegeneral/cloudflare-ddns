@@ -1,3 +1,3 @@
-source /home/pi/cloudflare-ddns/.env
+source $(dirname $0)/.env
 
-/home/pi/cloudflare-ddns/venv/bin/python /home/pi/cloudflare-ddns/ddns.py
+python3 $(dirname $0)/ddns.py
