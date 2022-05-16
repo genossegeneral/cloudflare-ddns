@@ -9,7 +9,7 @@ def get_ip() -> str:
     """
     get the ip address of whoever executes the script
     """
-    url = "http://ip.42.pl/raw"
+    url = "http://checkip.amazonaws.com/"
     response = requests.get(url)
     return str(response.text)
 
